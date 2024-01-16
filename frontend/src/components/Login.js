@@ -38,9 +38,10 @@ const Login = () => {
   const handleShowClick = () => setShowPassword(!showPassword);
 
   function handleClick() {
-    console.log(emailidInput.current.value);
-    console.log(passwordInput.current.value);
-    axios.get(`http://localhost:8080/api/login/${emailidInput.current.value}`)
+    axios.post(`http://localhost:8080/api/login`, {
+      emailid: emailidInput.current.value,
+      password: passwordInput.current.value
+  })
       .then(function (response) {
         // console.log(response.data)
         console.log(response)

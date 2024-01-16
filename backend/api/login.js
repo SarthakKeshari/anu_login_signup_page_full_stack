@@ -3,11 +3,11 @@ const router = express.Router();
 const db = require("../dbConnection")
 const collection = db.collection("Userdata")
 
-router.get("/:emailid", (req, res) => {
+router.post("/", (req, res) => {
   try {
-    collection.find({emailid: req.params.emailid})
+    collection.find({emailid: req.body.emailid})
     .toArray().then((results) => {
-        if(results.length>0)
+        if(results.length>0 && req.body.password == results[0].password)
           res.status(200).send(true);
         else {
           res.status(200).send(false)
