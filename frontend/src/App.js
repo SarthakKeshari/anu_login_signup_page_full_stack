@@ -1,12 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
-    <div className="App">
-      <Button colorScheme='blue'>Button</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Login />} />
+          <Route path="signup" element={<Register />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
